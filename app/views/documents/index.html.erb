@@ -1,0 +1,14 @@
+<h2> All Documents Within The Database </h2>
+<p> <em>Sorted alphabetically </em></p>
+
+<div>
+<% @documents.each do |doc| %>
+	
+	<h3><a href = "/documents/<%= doc.id%>"> <%= doc.file_name %> </a></h3>
+
+	<p> Client: <%= doc.client %> </p>
+	<p> Deadline <em> (year, month, day)</em>: <%= doc.deadline %> </p>
+
+	<br/><br/><hr/>
+
+<% end %>

@@ -10,14 +10,29 @@
   </head>
 
   <body>
+
     <% if current_user %>
       <%= link_to 'Logout', session_path('current'), method: 'delete' %> <!--How is this working -->
       <h5> <%= User.find(session[:user_id]).email %></h5>
+      <%= link_to 'New Entry', new_document_path %>
+      <a href = "/documents"> All Documents </a>
     <%else %>
       <%= link_to "Sign Up", new_user_path %>
       <br/>
       <%= link_to "Log In", new_session_path %>
     <% end%>
+
+
+    <!-- This part is for flash messages -->
+    <% flash.each do |key, value| -%>
+      
+        <div id="flash" class = "alert alert-warning">
+
+        <div id="flash_<%= key %>"><%=h value %></div>
+
+      </div>
+    <% end %>
+
 
     <%= yield %>
   </body>
