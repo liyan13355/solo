@@ -1,5 +1,8 @@
 require 'byebug'
 class UsersController < ApplicationController
+	before_action :authorise, :only => [:index]
+	before_action :superadmin, :only => [:index]
+
 
 	def new
 		@user = User.new
@@ -15,6 +18,16 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def index
+
+		@users = User.where(verified: false).order(:last_name)
+	end
+
+	def update
+		@user = User.find(params[:id]).update(verified: true)
+
+		redirect_back fallback_location: users_path
+	end
 
 	private
 
