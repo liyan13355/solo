@@ -8,3 +8,7 @@
 <br/>
 
 <h2> Deadline <em> (year, month, day)</em>: <%= @document.deadline %> </h2>
+
+<%= form_tag("/documents/#{params[:id]}", method: :delete) do %>
+	    			<input type="submit" value="Delete Entry" />
+		<% end %>   

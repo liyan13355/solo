@@ -20,7 +20,21 @@ class DocumentsController < ApplicationController
 	end
 
 	def index
+
+		@search = Document.ransack(params[:q])
+		@result = @search.result
+
 		@documents = Document.order(:file_name)
+
+		@documents_deadline = Document.order(:deadline)
+
+		@documents_created = Document.order(:created_at)
+	end
+
+	def destroy
+		@document = Document.find(params[:id])
+		@document.destroy
+		redirect_to documents_path
 	end
 
 

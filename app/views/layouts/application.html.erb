@@ -11,8 +11,9 @@
 
   <body>
 
+    <p><a href = "/"> Home </a></p>
     <% if current_user %>
-      <%= link_to 'Logout', session_path('current'), method: 'delete' %> <!--How is this working -->
+      <%= link_to 'Logout', session_path('current'), method: 'delete' %>
       <h5> <%= User.find(session[:user_id]).email %></h5>
       <%= link_to 'New Entry', new_document_path %>
       <a href = "/documents"> All Documents </a>
@@ -21,6 +22,14 @@
       <br/>
       <%= link_to "Log In", new_session_path %>
     <% end%>
+
+
+    <!--for verification of the users -->
+    <% if current_user %>
+    <% if User.find(session[:user_id]).superadmin? %>
+      <p><a href = "/users"> User Verification </a></p>
+    <% end %>
+    <%end %>
 
 
     <!-- This part is for flash messages -->

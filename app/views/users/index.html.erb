@@ -1,0 +1,22 @@
+<h2> All Unverified Users </h2>
+<p> Verifying a user will allow them to create new entries for documents, check on upcoming deadlines and delete entries  </p>
+<hr/>
+<div> 
+	<% @users.each_with_index do |user, index| %>
+		<% index +=1 %>
+		<p><%= index %> ) <%= user.title %>
+				<strong><%= user.last_name %> </strong>
+				<%= user.first_name %>
+		</p>
+
+		<p> <%= user.email %></p>
+
+		<%= form_tag("/users/#{user.id}", method: :patch) do %>
+	    	<input type="submit" value="Verify User" />
+		<% end %> 
+
+		<br/>
+
+		<% end %>
+
+</div>
