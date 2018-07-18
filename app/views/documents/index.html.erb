@@ -25,7 +25,13 @@
 <%end %>
 
 <br/><br/>
-<div class = "alphabetical">
+
+
+<div> Sort <div class = "A"><a href="#">Alphabetically</a></div> <div class = "B"><a href= "#">By Deadline</a></div> <div class = "C"><a href = "#">Entry Date</a></div></div>
+
+
+
+<div id = "alphabetical">
 	<p> <em>Sorted alphabetically </em></p>
 
 	<div>
@@ -48,8 +54,8 @@
 <hr/>
 
 
-<div class = "deadline">
-
+<div style = "display: none">
+	<div id = "deadline">
 	<p><em>Sorted by nearest approaching deadline </em></p>
 
 	<div>
@@ -66,12 +72,13 @@
 		<% end %>
 
 	</div>
+	</div>
 </div>
 <hr/>
 
 
-<div class = "created">
-
+<div style = "display: none">
+	<div id = "created">
 	<p><em>Sorted by oldest entries </em></p>
 
 	<div>
@@ -88,5 +95,30 @@
 		<% end %>
 
 	</div>
+	</div>	
 </div>
 <hr/>
+
+<script>
+
+
+	$(".A").click(function(event) {
+		event.preventDefault();
+		$("#alphabetical").load("/documents #alphabetical");
+	});
+
+	$(".B").click(function(event) {
+		event.preventDefault();
+		$("#alphabetical").load("/documents #deadline");
+	});
+
+	$(".C").click(function() {
+		event.preventDefault();
+		$("#alphabetical").load("/documents #created");
+	});
+
+
+	
+
+
+</script>
