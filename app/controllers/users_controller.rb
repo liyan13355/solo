@@ -1,4 +1,3 @@
-require 'byebug'
 class UsersController < ApplicationController
 	before_action :authorise, :only => [:index]
 	before_action :superadmin, :only => [:index]
