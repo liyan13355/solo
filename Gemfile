@@ -44,6 +44,9 @@ gem 'jquery-rails'
 
 gem 'braintree'
 
+gem 'sidekiq'
+
+gem 'mail'
 
 
 group :development, :test do
